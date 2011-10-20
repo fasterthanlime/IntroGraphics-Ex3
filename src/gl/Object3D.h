@@ -70,6 +70,8 @@ public:
 	void translateWorld( const Vector3 & _trans )
 	{
         Matrix4 translationMatrix = getTranslationMatrix(_trans);
+        std::cout << "translateWorld called" << std::endl;
+        m_transformationMatrix = translationMatrix * m_transformationMatrix;
 		// ((( Exercise 3.4 )))
 	}
 	
@@ -78,6 +80,8 @@ public:
 	void translateObject( const Vector3 & _trans )
 	{
         Matrix4 translationMatrix = getTranslationMatrix(_trans);
+        std::cout << "translateObject called" << std::endl;
+        m_transformationMatrix = translationMatrix * m_transformationMatrix;
 		// ((( Exercise 3.4 )))
 	}
 	
@@ -127,14 +131,14 @@ public:
 
 	//! calculate translation matrix from vector
 	static Matrix4 getTranslationMatrix(const Vector3 & _trans) {
-
-		Matrix4 translationMatrix;
-        
 		// ((( Exercise 3.4 )))
-        translationMatrix.loadIdentity();
-		
-		return translationMatrix;
-	}
+    return Matrix4(
+        1.0, 0.0, 0.0, _trans.x,
+        0.0, 1.0, 0.0, _trans.y,
+        0.0, 0.0, 1.0, _trans.z,
+        0.0, 0.0, 0.0, 1
+    );
+  }
 	
 	//! calculate scale matrix from vector
 	static Matrix4 getScaleMatrix(const Vector3 & _scale) {

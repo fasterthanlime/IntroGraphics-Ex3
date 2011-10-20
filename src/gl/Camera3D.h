@@ -22,7 +22,7 @@
 
 //== CLASS DEFINITION =========================================================
 
-
+const double PI = 3.141592;
 
 /*
      Perspective Camera
@@ -120,10 +120,10 @@ public: //------------------------------------------------ public methods
     void getScreenExtents(double &top, double &bottom, double &left, double &right)
     {
 		// ((( Exercise 3.2.4 )))
-        top = -1;
-        bottom = 1;
-        left = -1;
-        right = 1;
+        top    =   m_height / 2;
+        bottom = - m_height / 2;
+        left   = - m_width / 2;
+        right  =   m_width / 2;
     }
 	
 	
@@ -132,12 +132,33 @@ protected:
 	void updateProjectionMatrix()
     {
 		// ((( Exercise 3.2.4 )))
-        // replace this
+    double top, bottom, left, right;
+    getScreenExtents(top, bottom, left, right);
+    std::cout << "Screen extents: top = " << top << ", bottom = " << bottom << ", left = " << left << ", right = " << right << std::endl;
+    std::cout << "near = " << m_near << ", far = " << m_far << ", fovy = " << m_fovy << std::endl;
+
+    double aspect = m_width / m_height;
+
+    double xymax = m_near * tan(m_fovy * PI / 360.0);
+    double ymin = -xymax;
+    double xmin = -xymax;
+
+    double width = xymax - xmin;
+    double height = xymax - ymin;
+
+    double depth = m_far - m_near;
+    double q = -(m_far + m_near) / depth;
+    double qn = -2 * (m_far * m_near) / depth;
+
+    double w = 2 * m_near / width;
+    w = w / aspect;
+    double h = 2 * m_near / height;
+
 		m_perspectiveProjectionMatrix = Matrix4(
-                                                1, 0, 0, 0,
-                                                0, 1, 0, 0,
-                                                0, 0, 1, 1,
-                                                0, 0, -1, 0
+                                                      w,  0.0,  0.0,  0.0,
+                                                    0.0,    h,  0.0,  0.0,
+                                                    0.0,  0.0,    q, -1.0,
+                                                    0.0,  0.0,   qn,  0.9
                                                 );
 	}
 	

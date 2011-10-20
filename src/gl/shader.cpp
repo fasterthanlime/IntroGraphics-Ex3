@@ -37,6 +37,7 @@ void Shader::create(const std::string _vertexFileName, const std::string& _fragm
 	// Vertex Shader Loading
 	unsigned int vertexShader;
 	std::ifstream fileVs;
+  std::cout << "Trying to open file: " << _vertexFileName << std::endl;
 	fileVs.open(_vertexFileName.c_str(), std::ios::binary);
 	assert(fileVs.is_open());
 	if(fileVs.is_open())
