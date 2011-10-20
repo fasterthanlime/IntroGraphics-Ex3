@@ -1,0 +1,6 @@
+*.[oa]
+*.suo
+*.ncb
+*.vcproj.*
+visualstudio/
+*~

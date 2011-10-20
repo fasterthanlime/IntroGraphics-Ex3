@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/lgg-intrograph/!svn/ver/135/trunk/lgg-intrograph/src/math
+END
+Vector2.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/math/Vector2.h
+END
+Vector3.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/math/Vector3.h
+END
+Vector4.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/math/Vector4.h
+END
+Matrix4.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/math/Matrix4.h
+END

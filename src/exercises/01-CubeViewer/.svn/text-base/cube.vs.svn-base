@@ -1,0 +1,36 @@
+uniform mat4 ModelWorldTransform;
+uniform mat4 WorldCameraTransform;
+uniform mat4 ProjectionMatrix;
+
+uniform mat3 WorldCameraNormalTransform;
+uniform mat3 ModelWorldNormalTransform;
+
+varying vec3 normal;
+varying vec4 color;
+
+
+
+void main()
+{
+#ifndef STRIP_CODE
+	color = gl_Color;
+
+	// transform normal to camera coordinates
+	// -- should be the inverse transpose but that seems to be broken for some reason
+	
+	//normal = normalize(worldcamera * modelworld * vec4( gl_Normal.x, gl_Normal.y, gl_Normal.z, 0.0));
+	normal = normalize( WorldCameraNormalTransform * ModelWorldNormalTransform * gl_Normal );
+
+	// project the point into the camera
+	gl_Position = ProjectionMatrix * WorldCameraTransform * ModelWorldTransform * gl_Vertex;
+#else
+	// Exercise 3.2.5 and 3.3.1
+	// right now this renders everything explicitely set to be within the unit cube
+	gl_Position = gl_Vertex;
+
+	// need this line so OpenGL doesn't optimize out the variables -- remove in your solution
+    // {
+	ModelWorldTransform; WorldCameraTransform; ProjectionMatrix; WorldCameraNormalTransform; ModelWorldNormalTransform; normal; color;
+    // }
+#endif
+}

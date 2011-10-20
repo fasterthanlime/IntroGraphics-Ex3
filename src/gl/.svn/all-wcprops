@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/lgg-intrograph/!svn/ver/137/trunk/lgg-intrograph/src/gl
+END
+texture.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/texture.cpp
+END
+GlutViewer.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/GlutViewer.h
+END
+Object3D.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/Object3D.h
+END
+Light3D.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/Light3D.h
+END
+texture.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/texture.h
+END
+fbo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/fbo.cpp
+END
+shader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/shader.cpp
+END
+gl.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/lgg-intrograph/!svn/ver/104/trunk/lgg-intrograph/src/gl/gl.h
+END
+fbo.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/fbo.h
+END
+shader.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/shader.h
+END
+TrackballViewer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/TrackballViewer.cpp
+END
+Mesh3D.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/Mesh3D.cpp
+END
+Camera3D.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/Camera3D.h
+END
+TrackballViewer.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/TrackballViewer.h
+END
+Mesh3D.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/Mesh3D.h
+END
+GlutViewer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/lgg-intrograph/!svn/ver/142/trunk/lgg-intrograph/src/gl/GlutViewer.cpp
+END
