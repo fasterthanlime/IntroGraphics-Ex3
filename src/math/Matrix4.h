@@ -279,13 +279,21 @@ public:
 
 
 	void print() const {
-		for (int i=0; i<4; i++) {
-			for (int j=0; j<4; j++) {
-				std::cout << m[i][j];
-			}
-			std::cout << "\n";
-		}
+    std::cout << this;
 	}
+
+  friend std::ostream& operator << (std::ostream& stream, Matrix4 const& m) {
+    stream << std::endl;
+    for (int i = 0; i < 4; i++) {
+      stream << "(";
+			for (int j = 0; j < 4; j++) {
+				stream << m.m[i][j] << "\t";
+			}
+      stream << ")";
+      stream << std::endl;
+		}
+    return stream;
+  }
 
 
 	double * dataBlock() {

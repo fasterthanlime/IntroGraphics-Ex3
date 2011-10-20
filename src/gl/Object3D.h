@@ -70,8 +70,8 @@ public:
 	void translateWorld( const Vector3 & _trans )
 	{
         Matrix4 translationMatrix = getTranslationMatrix(_trans);
-        std::cout << "translateWorld called" << std::endl;
         m_transformationMatrix = translationMatrix * m_transformationMatrix;
+        std::cout << "translateWorld called, transfoMatrix now = " << m_transformationMatrix << std::endl;
 		// ((( Exercise 3.4 )))
 	}
 	
@@ -80,8 +80,8 @@ public:
 	void translateObject( const Vector3 & _trans )
 	{
         Matrix4 translationMatrix = getTranslationMatrix(_trans);
-        std::cout << "translateObject called" << std::endl;
         m_transformationMatrix = translationMatrix * m_transformationMatrix;
+        std::cout << "translateObject called, transfoMatrix now = " << m_transformationMatrix << std::endl;
 		// ((( Exercise 3.4 )))
 	}
 	

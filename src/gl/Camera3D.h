@@ -134,9 +134,7 @@ protected:
 		// ((( Exercise 3.2.4 )))
     double top, bottom, left, right;
     getScreenExtents(top, bottom, left, right);
-    std::cout << "Screen extents: top = " << top << ", bottom = " << bottom << ", left = " << left << ", right = " << right << std::endl;
-    std::cout << "near = " << m_near << ", far = " << m_far << ", fovy = " << m_fovy << std::endl;
-
+    
     double aspect = m_width / m_height;
 
     double xymax = m_near * tan(m_fovy * PI / 360.0);
