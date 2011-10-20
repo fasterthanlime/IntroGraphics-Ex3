@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs
+END
+glut.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glut.h
+END
+glew.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glew.h
+END
+glut32.lib
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glut32.lib
+END
+glew32.lib
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glew32.lib
+END
+glut.def
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glut.def
+END
+glut32.dll
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glut32.dll
+END
+glew32s.lib
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glew32s.lib
+END
+wglew.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/wglew.h
+END
+glxew.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glxew.h
+END
+glew32.dll
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/lgg-intrograph/!svn/ver/5/trunk/lgg-intrograph/visualstudio/libs/glew32.dll
+END
