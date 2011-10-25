@@ -108,34 +108,28 @@ public:
 	//! rotates the object around an arbitrary axis in world coordinate system
 	void rotateAroundAxisWorld( const Vector3 & _pt, const Vector3& _axis, float _angle )
 	{
-        Matrix4 rotationMatrix = getRotationMatrix(_axis,_angle);
-		// ((( Exercise 3.4 )))
+        m_transformationMatrix = (getTranslationMatrix(_pt) * getRotationMatrix(_axis, _angle) * getTranslationMatrix(-_pt)) * m_transformationMatrix;
 	}
 
 	//! rotates the object around an arbitrary axis in object coordinate system
 	void rotateAroundAxisObject( const Vector3 & _pt, const Vector3& _axis, float _angle )
 	{
-        Matrix4 rotationMatrix = getRotationMatrix(_axis,_angle);
-		// ((( Exercise 3.4 )))
+        m_transformationMatrix = m_transformationMatrix * (getTranslationMatrix(_pt) * getRotationMatrix(_axis, _angle) * getTranslationMatrix(-_pt));
 	}
 
 
 	//! calculate translation matrix from vector
 	static Matrix4 getTranslationMatrix(const Vector3 & _trans) {
-		// ((( Exercise 3.4 )))
-    
-	return Matrix4(
+	  return Matrix4(
         1, 0, 0, _trans.x,
         0, 1, 0, _trans.y,
         0, 0, 1, _trans.z,
         0, 0, 0, 1.0
     );
-	
   }
 	
 	//! calculate scale matrix from vector
 	static Matrix4 getScaleMatrix(const Vector3 & _scale) {
-		// ((( Exercise 3.4 )))
         return Matrix4(
         _scale.x, 0.0, 0.0, 0.0,
         0.0, _scale.y, 0.0, 0.0,
@@ -145,14 +139,60 @@ public:
 	
 	//! calculate rotation matrix from rotation axis and angle in radian
 	static Matrix4 getRotationMatrix(const Vector3 & axis, double angle) {
-		double cosa = cos(angle);
-		double sina = sin(angle);
-		Matrix4 rotationMatrix;
+		Vector3 r = axis;
+    double phi1 = atan(r.x / r.z);
+    
+    double cosMinusPhi1 = cos(-phi1);
+    double sinMinusPhi1 = sin(-phi1);
+    Matrix4 RyMinus(
+        cosMinusPhi1, 0, sinMinusPhi1, 0,
+        0, 1, 0, 0,
+       -sinMinusPhi1, 0, cosMinusPhi1, 0,
+        0, 0, 0, 1
+    );
 
-		// ((( Exercise 3.4 )))
-		rotationMatrix.loadIdentity();
-        
-		return rotationMatrix;
+    Vector3 rPrim = RyMinus * r;
+    double phi2 = atan(rPrim.y / rPrim.x);
+
+    double cosPhi2 = cos(phi2);
+    double sinPhi2 = sin(phi2);
+    Matrix4 Rx(
+      1, 0, 0, 0,
+      0, cosPhi2, -sinPhi2, 0,
+      0, sinPhi2,  cosPhi2, 0,
+      0, 0, 0, 1
+    );
+
+    double cosa = cos(angle);
+		double sina = sin(angle);
+
+    Matrix4 Rz(
+      cosa, -sina, 0, 0,
+      sina,  cosa, 0, 0,
+      0, 0, 1, 0,
+      0, 0, 0, 1
+    );
+
+    double cosPhi1 = cos(phi1);
+    double sinPhi1 = sin(phi1);
+    Matrix4 Ry(
+        cosPhi1, 0, sinPhi1, 0,
+        0, 1, 0, 0,
+       -sinPhi1, 0, cosPhi1, 0,
+        0, 0, 0, 1
+    );
+
+    double cosMinusPhi2 = cos(-phi2);
+    double sinMinusPhi2 = sin(-phi2);
+    Matrix4 RxMinus(
+      1, 0, 0, 0,
+      0, cosMinusPhi2, -sinMinusPhi2, 0,
+      0, sinMinusPhi2,  cosMinusPhi2, 0,
+      0, 0, 0, 1
+    );
+
+		Matrix4 rotationMatrix = Ry * RxMinus * Rz * Rx * RyMinus;
+    return rotationMatrix;
 	}
 	
 protected:
