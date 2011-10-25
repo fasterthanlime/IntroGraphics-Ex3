@@ -120,10 +120,11 @@ public: //------------------------------------------------ public methods
     void getScreenExtents(double &top, double &bottom, double &left, double &right)
     {
 		// ((( Exercise 3.2.4 )))
-        top    =   m_height / 2;
-        bottom = - m_height / 2;
-        left   = - m_width / 2;
-        right  =   m_width / 2;
+      double ratio = m_height / m_width;
+      top    =  m_near * tan(m_fovy / 360.0 * PI);
+      right  =  ratio * top;
+      bottom = -top;      
+      left   = -right;
     }
 	
 	
@@ -132,32 +133,20 @@ protected:
 	void updateProjectionMatrix()
     {
 		// ((( Exercise 3.2.4 )))
-    double top, bottom, left, right;
-    getScreenExtents(top, bottom, left, right);
-    
-    double aspect = m_width / m_height;
+
+    double t, b, l, r, n, f;
+    getScreenExtents(t, b, l, r);
+    n = m_near;
+    f = m_far;
 
     double xymax = m_near * tan(m_fovy * PI / 360.0);
-    double ymin = -xymax;
-    double xmin = -xymax;
 
-    double width = xymax - xmin;
-    double height = xymax - ymin;
-
-    double depth = m_far - m_near;
-    double q = -(m_far + m_near) / depth;
-    double qn = -2 * (m_far * m_near) / depth;
-
-    double w = 2 * m_near / width;
-    w = w / aspect;
-    double h = 2 * m_near / height;
-
-		m_perspectiveProjectionMatrix = Matrix4(
-                                                      w,  0.0,  0.0,  0.0,
-                                                    0.0,    h,  0.0,  0.0,
-                                                    0.0,  0.0,    q, -1.0,
-                                                    0.0,  0.0,   qn,  0.9
-                                                );
+    m_perspectiveProjectionMatrix = Matrix4(
+      2*n / (r - l), 0            , (r + l) / (r - l)  ,    0,
+      0            , 2*n / (t - b), (t + b) / (t - b)  ,    0,
+      0            , 0            , - (f + n) / (f - n), -2 * n * f / (f - n),
+      0            , 0            , -1                 ,    0
+    );
 	}
 	
 private: //------------------------------------------------------- private data
