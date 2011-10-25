@@ -69,9 +69,7 @@ public:
 	//! translates the object in the world coordinate system
 	void translateWorld( const Vector3 & _trans )
 	{
-        Matrix4 translationMatrix = getTranslationMatrix(_trans);
-        m_transformationMatrix = translationMatrix * m_transformationMatrix;
-        std::cout << "translateWorld called, transfoMatrix now = " << m_transformationMatrix << std::endl;
+        m_transformationMatrix = getTranslationMatrix(_trans) * m_transformationMatrix;
 		// ((( Exercise 3.4 )))
 	}
 	
@@ -79,37 +77,35 @@ public:
 	//! translates the object in the object coordinate systems
 	void translateObject( const Vector3 & _trans )
 	{
-        Matrix4 translationMatrix = getTranslationMatrix(_trans);
-        m_transformationMatrix = translationMatrix * m_transformationMatrix;
-        std::cout << "translateObject called, transfoMatrix now = " << m_transformationMatrix << std::endl;
+        m_transformationMatrix = m_transformationMatrix * getTranslationMatrix(_trans);
 		// ((( Exercise 3.4 )))
 	}
 	
 	//! scales the object in the world coordinate system
 	void scaleWorld( const Vector3 & _scl )
 	{
-        Matrix4 scaleMatrix = getScaleMatrix(_scl);
+        m_transformationMatrix = getScaleMatrix(_scl) * m_transformationMatrix;
 		// ((( Exercise 3.4 )))
 	}
 
 	//! scales the object in the object coordinate systems
 	void scaleObject( const Vector3 & _scl )
 	{
-        Matrix4 scaleMatrix = getScaleMatrix(_scl);
+        m_transformationMatrix = m_transformationMatrix * getScaleMatrix(_scl);
 		// ((( Exercise 3.4 )))
 	}
 
 	//! rotates the object in the world coordinate system
 	void rotateWorld( const Vector3& _axis, float _angle )
 	{
-        Matrix4 rotationMatrix = getRotationMatrix(_axis,_angle);
+        m_transformationMatrix = getRotationMatrix(_axis, _angle) * m_transformationMatrix;
 		// ((( Exercise 3.4 )))
 	}
 
 	//! rotates the object in the object coordinate system
 	void rotateObject( const Vector3& _axis, float _angle )
 	{
-        Matrix4 rotationMatrix = getRotationMatrix(_axis,_angle);
+        m_transformationMatrix = m_transformationMatrix * getRotationMatrix(_axis, _angle);
 		// ((( Exercise 3.4 )))
 	}
 
@@ -146,7 +142,7 @@ public:
 		Matrix4 scaleMatrix;
         
 		// ((( Exercise 3.4 )))
-        scaleMatrix.loadIdentity();
+    scaleMatrix.loadIdentity();
 		
 		return scaleMatrix;
 	}
