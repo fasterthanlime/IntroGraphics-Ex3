@@ -120,6 +120,14 @@ public:
 		return *this;
 	}
 
+  void print() const {
+    std::cout << this;
+	}
+
+  friend std::ostream& operator << (std::ostream& stream, Vector3 const& m) {
+    return stream << "(" << m.x << ", " << m.y << ", " << m.z << ")";
+  }
+
 	double lengthSquared() const { return x*x + y*y + z*z; }
 	
 	double length() const { return sqrt(lengthSquared()); }

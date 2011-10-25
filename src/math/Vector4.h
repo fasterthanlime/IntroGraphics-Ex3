@@ -101,6 +101,14 @@ public:
 			else if (w<0.f) w=0.f;
 		return *this;
 	}
+  
+  void print() const {
+    std::cout << this;
+	}
+
+  friend std::ostream& operator << (std::ostream& stream, Vector4 const& m) {
+    return stream << "(" << m.x << ", " << m.y << ", " << m.z << ", " << m.w << ")";
+  }
 
 	double lengthSquared() const { return x*x + y*y + z*z + w*w; }
 	

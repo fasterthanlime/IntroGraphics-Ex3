@@ -96,6 +96,14 @@ public:
 		return *this;
 	}
 
+  void print() const {
+    std::cout << this;
+	}
+
+  friend std::ostream& operator << (std::ostream& stream, Vector2 const& m) {
+    return stream << "(" << m.x << ", " << m.y << ")";
+  }
+
 
 	double lengthSquared() const { return x*x + y*y; }
 	
