@@ -153,10 +153,10 @@ protected:
     double h = 2 * m_near / height;
 
 		m_perspectiveProjectionMatrix = Matrix4(
-                                                      w,  0.0,  0.0,  0.0,
-                                                    0.0,    h,  0.0,  0.0,
-                                                    0.0,  0.0,    q, -1.0,
-                                                    0.0,  0.0,   qn,  0.9
+                                                      w,  0,  0,  0,
+                                                    0,    h,  0,  0,
+                                                    0,  0,    q, qn,
+                                                    0,  0,   -1,  0
                                                 );
 	}
 	
