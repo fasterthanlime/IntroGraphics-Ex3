@@ -14,8 +14,8 @@ void main()
 {
 	// Exercise 3.2.5 and 3.3.1
 	// right now this renders everything explicitely set to be within the unit cube
-	gl_Position = ProjectionMatrix * gl_Vertex;
-
+	gl_Position = ProjectionMatrix * WorldCameraTransform * ModelWorldTransform * gl_Vertex;
+	
 	// need this line so OpenGL doesn't optimize out the variables -- remove in your solution
     // {
 	ModelWorldTransform; WorldCameraTransform; ProjectionMatrix; WorldCameraNormalTransform; ModelWorldNormalTransform; normal; color;
