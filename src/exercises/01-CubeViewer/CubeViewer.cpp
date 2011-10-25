@@ -349,8 +349,8 @@ draw_scene(DrawMode _draw_mode)
   // for illustration render a small sphere at the world center
 	Matrix4 ident;
 	ident.loadIdentity();
-	m_cubeShader.setMatrix4x4Uniform("ModelWorldTransform", ident );
-	m_cubeShader.setMatrix3x3Uniform("ModelWorldNormalTransform", ident );
+	m_cubeShader.setMatrix4x4Uniform("ModelWorldTransform", ident);
+	m_cubeShader.setMatrix3x3Uniform("ModelWorldNormalTransform", ident);
 
   // DEBUG
   std::cout << "projection matrix = " << m_camera.getProjectionMatrix() << std::endl;

@@ -58,55 +58,50 @@ public:
 	
 	//! return origin of object in world coordinates
 	Vector3 origin() const {
-		return m_transformationMatrix * Vector3(0,0,0);
+		  return m_transformationMatrix * Vector3(0,0,0);
 	}
 
 	//! set transformation matrix to identity
 	void setIdentity() {
-		m_transformationMatrix.loadIdentity();
+		  m_transformationMatrix.loadIdentity();
 	}
 	
 	//! translates the object in the world coordinate system
 	void translateWorld( const Vector3 & _trans )
 	{
         m_transformationMatrix = getTranslationMatrix(_trans) * m_transformationMatrix;
-		// ((( Exercise 3.4 )))
-	}
+  }
 	
 	
 	//! translates the object in the object coordinate systems
 	void translateObject( const Vector3 & _trans )
 	{
         m_transformationMatrix = m_transformationMatrix * getTranslationMatrix(_trans);
-		// ((( Exercise 3.4 )))
+
 	}
 	
 	//! scales the object in the world coordinate system
 	void scaleWorld( const Vector3 & _scl )
 	{
         m_transformationMatrix = getScaleMatrix(_scl) * m_transformationMatrix;
-		// ((( Exercise 3.4 )))
 	}
 
 	//! scales the object in the object coordinate systems
 	void scaleObject( const Vector3 & _scl )
 	{
         m_transformationMatrix = m_transformationMatrix * getScaleMatrix(_scl);
-		// ((( Exercise 3.4 )))
 	}
 
 	//! rotates the object in the world coordinate system
 	void rotateWorld( const Vector3& _axis, float _angle )
 	{
         m_transformationMatrix = getRotationMatrix(_axis, _angle) * m_transformationMatrix;
-		// ((( Exercise 3.4 )))
 	}
 
 	//! rotates the object in the object coordinate system
 	void rotateObject( const Vector3& _axis, float _angle )
 	{
         m_transformationMatrix = m_transformationMatrix * getRotationMatrix(_axis, _angle);
-		// ((( Exercise 3.4 )))
 	}
 
 
@@ -128,23 +123,24 @@ public:
 	//! calculate translation matrix from vector
 	static Matrix4 getTranslationMatrix(const Vector3 & _trans) {
 		// ((( Exercise 3.4 )))
-    return Matrix4(
-        1.0, 0.0, 0.0, _trans.x,
-        0.0, 1.0, 0.0, _trans.y,
-        0.0, 0.0, 1.0, _trans.z,
-        0.0, 0.0, 0.0, 1
+    
+	return Matrix4(
+        1, 0, 0, _trans.x,
+        0, 1, 0, _trans.y,
+        0, 0, 1, _trans.z,
+        0, 0, 0, 1.0
     );
+	
   }
 	
 	//! calculate scale matrix from vector
 	static Matrix4 getScaleMatrix(const Vector3 & _scale) {
-		
-		Matrix4 scaleMatrix;
-        
 		// ((( Exercise 3.4 )))
-    scaleMatrix.loadIdentity();
-		
-		return scaleMatrix;
+        return Matrix4(
+        _scale.x, 0.0, 0.0, 0.0,
+        0.0, _scale.y, 0.0, 0.0,
+        0.0, 0.0, _scale.z, 0.0,
+        0.0, 0.0, 0.0, 1.0);
 	}
 	
 	//! calculate rotation matrix from rotation axis and angle in radian
