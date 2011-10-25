@@ -346,11 +346,23 @@ draw_scene(DrawMode _draw_mode)
         cube->setTransformation( originalTransformation );
     }
 	
-    // for illustration render a small sphere at the world center
+  // for illustration render a small sphere at the world center
 	Matrix4 ident;
 	ident.loadIdentity();
 	m_cubeShader.setMatrix4x4Uniform("ModelWorldTransform", ident );
 	m_cubeShader.setMatrix3x3Uniform("ModelWorldNormalTransform", ident );
+
+  // DEBUG
+  std::cout << "projection matrix = " << m_camera.getProjectionMatrix() << std::endl;
+  Vector3 testPoint(1.0, 1.0, 1.0);
+  std::cout << "testPoint = " << testPoint << " (initial)" << std::endl;
+  testPoint = ident * testPoint;
+  std::cout << "testPoint = " << testPoint << " (after ModelWorld)" << std::endl;
+  testPoint = m_camera.getTransformation().Inverse() * testPoint;
+  std::cout << "testPoint = " << testPoint << " (after WorldCamera)" << std::endl;
+  testPoint = m_camera.getProjectionMatrix() * testPoint;
+  std::cout << "testPoint = " << testPoint << " (after ProjectionMatrix)" << std::endl;
+  // DEBUG END
 	
 	glColor3f(1.0,1.0,1.0); // set sphere color to white
 	glutSolidSphere( 0.05, 10, 10 );
