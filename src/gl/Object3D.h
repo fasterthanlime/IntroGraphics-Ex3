@@ -70,9 +70,9 @@ public:
 	void translateWorld( const Vector3 & _trans )
 	{
         Matrix4 translationMatrix = getTranslationMatrix(_trans);
-        m_transformationMatrix = translationMatrix * m_transformationMatrix;
-        std::cout << "translateWorld called, transfoMatrix now = " << m_transformationMatrix << std::endl;
-		// ((( Exercise 3.4 )))
+		m_transformationMatrix =  getTranslationMatrix(_trans)*m_transformationMatrix;
+        //std::cout << "translateWorld called, transfoMatrix now = " << m_transformationMatrix << std::endl;
+		// ((( Exercise 3.4 ))
 	}
 	
 	
@@ -80,9 +80,11 @@ public:
 	void translateObject( const Vector3 & _trans )
 	{
         Matrix4 translationMatrix = getTranslationMatrix(_trans);
-        m_transformationMatrix = translationMatrix * m_transformationMatrix;
-        std::cout << "translateObject called, transfoMatrix now = " << m_transformationMatrix << std::endl;
+        
+		m_transformationMatrix = m_transformationMatrix*getTranslationMatrix(_trans);
+        //std::cout << "translateObject called, transfoMatrix now = " << m_transformationMatrix << std::endl;
 		// ((( Exercise 3.4 )))
+
 	}
 	
 	//! scales the object in the world coordinate system
@@ -132,23 +134,26 @@ public:
 	//! calculate translation matrix from vector
 	static Matrix4 getTranslationMatrix(const Vector3 & _trans) {
 		// ((( Exercise 3.4 )))
-    return Matrix4(
-        1.0, 0.0, 0.0, _trans.x,
-        0.0, 1.0, 0.0, _trans.y,
-        0.0, 0.0, 1.0, _trans.z,
-        0.0, 0.0, 0.0, 1
+    
+	return Matrix4(
+        1, 0, 0, _trans.x,
+        0, 1, 0, _trans.y,
+        0, 0, 1, _trans.z,
+        0, 0, 0, 1.0
     );
+	
   }
 	
 	//! calculate scale matrix from vector
 	static Matrix4 getScaleMatrix(const Vector3 & _scale) {
-		
-		Matrix4 scaleMatrix;
+			
         
 		// ((( Exercise 3.4 )))
-        scaleMatrix.loadIdentity();
-		
-		return scaleMatrix;
+        return Matrix4(
+        _scale.x, 0.0, 0.0, 0.0,
+        0.0, _scale.y, 0.0, 0.0,
+        0.0, 0.0, _scale.z, 0.0,
+        0.0, 0.0, 0.0, 1.0);
 	}
 	
 	//! calculate rotation matrix from rotation axis and angle in radian
