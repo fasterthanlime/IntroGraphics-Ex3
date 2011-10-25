@@ -117,34 +117,36 @@ public: //------------------------------------------------ public methods
 	double getFarPlane() { return m_far; }
 	
     //! return screen extents
-    void getScreenExtents(double &top, double &bottom, double &left, double &right)
+   void getScreenExtents(double &top, double &bottom, double &left, double &right)
     {
-		// ((( Exercise 3.2.4 )))
-      double ratio = m_height / m_width;
-      top    =  m_near * tan(m_fovy / 360.0 * PI);
-      right  =  ratio * top;
-      bottom = -top;      
-      left   = -right;
+// ((( Exercise 3.2.4 )))
+	double ratio =  m_width/m_height;
+    top = m_near * tan(m_fovy * PI / 360.0);
+    bottom = -top;
+    left = -top*ratio;
+	right= top*ratio;
     }
-	
-	
+
+
 protected:
-	//! calculate the perspective projection matrix
-	void updateProjectionMatrix()
+//! calculate the perspective projection matrix
+void updateProjectionMatrix()
     {
-		// ((( Exercise 3.2.4 )))
+// ((( Exercise 3.2.4 )))
+    
     double t, b, l, r, n, f;
     getScreenExtents(t, b, l, r);
     n = m_near;
     f = m_far;
-
-    m_perspectiveProjectionMatrix = Matrix4(
-      2*n / (r - l), 0            , 0                  ,    0,
-      0            , 2*n / (t - b), 0                  ,    0,
-      0            , 0            , - (f + n) / (f - n), -2 * n * f / (f - n),
-      0            , 0            , -1                 ,    0
-    );
-	}
+      
+	m_perspectiveProjectionMatrix = Matrix4(
+      n/r, 0 , 0 , 0,
+      0 , n/t, 0 , 0,
+      0 , 0 , - (f + n) / (f - n), -2*f*n / (f - n),
+      0 , 0 , -1 , 0
+	  );
+	
+}
 	
 private: //------------------------------------------------------- private data
 
