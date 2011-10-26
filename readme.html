@@ -55,8 +55,7 @@ by Amos Wenger and Javier Martín de Valmaseda
 <p>It was really not clear from the slides what to do in getScreenExtents() but we finally figured it out. When the projection matrix became correct, it looked like this:</p>
 
 <p class='center'><img src="images/perspective.png"></p>
-
-<p>And with translation:</p>
+<p> For the translation we need to multiply the translate matrix to the transformationMatrix to get the final transformationMatrix.</p>
 
 <p class='center'><img src="images/translation.png"></p>
 
@@ -74,12 +73,15 @@ by Amos Wenger and Javier Martín de Valmaseda
 
 <h2>3.5 Clipping Planes (5 points)</h2>
 
-<p>Blah blah</p>
+<p>If we take a cross-section of the cube, we will see diferents shapes depend on the direction of the section, like squares and rectangles, lines.</p>
+<p>Following the images of the clipping planes</p>
+
 
 <p class='center'><img src="images/clipping1.png"></p>
 <p class='center'><img src="images/clipping2.png"></p>
 <p class='center'><img src="images/clipping3.png"></p>
-
+<p class='center'><img src="images/clipping5.png"></p>
+<p class='center'><img src="images/clipping6.png"></p>
 </body>
 </html>
 
