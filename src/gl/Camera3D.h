@@ -120,12 +120,12 @@ public: //------------------------------------------------ public methods
    void getScreenExtents(double &top, double &bottom, double &left, double &right)
     {
 // ((( Exercise 3.2.4 )))
-	double ratio =  m_width/m_height;
+	  double ratio = (double) m_width / (double) m_height;
     top = m_near * tan(m_fovy * PI / 360.0);
     bottom = -top;
-    left = -top*ratio;
-	right= top*ratio;
-    }
+    right = top * ratio;
+	  left = -right;
+  }
 
 
 protected:

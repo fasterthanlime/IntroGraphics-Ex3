@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	
-	CubeViewer window("Cube Viewer", 800, 800);
+	CubeViewer window("Cube Viewer", 800, 600);
 	
 	glutMainLoop();
 }
