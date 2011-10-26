@@ -69,52 +69,51 @@ public:
 	//! translates the object in the world coordinate system
 	void translateWorld( const Vector3 & _trans )
 	{
-        m_transformationMatrix = getTranslationMatrix(_trans) * m_transformationMatrix;
+        m_transformationMatrix = m_transformationMatrix * getTranslationMatrix(_trans);      
   }
 	
 	
 	//! translates the object in the object coordinate systems
 	void translateObject( const Vector3 & _trans )
 	{
-        m_transformationMatrix = m_transformationMatrix * getTranslationMatrix(_trans);
-
+        m_transformationMatrix = getTranslationMatrix(_trans) * m_transformationMatrix;
 	}
 	
 	//! scales the object in the world coordinate system
 	void scaleWorld( const Vector3 & _scl )
 	{
-       m_transformationMatrix = getScaleMatrix(_scl) * m_transformationMatrix;
+        m_transformationMatrix = m_transformationMatrix * getScaleMatrix(_scl);
 	}
 
 	//! scales the object in the object coordinate systems
 	void scaleObject( const Vector3 & _scl )
 	{
-        m_transformationMatrix = m_transformationMatrix * getScaleMatrix(_scl);
+        m_transformationMatrix = getScaleMatrix(_scl) * m_transformationMatrix; 
 	}
 
 	//! rotates the object in the world coordinate system
 	void rotateWorld( const Vector3& _axis, float _angle )
 	{
-        m_transformationMatrix = getRotationMatrix(_axis, _angle) * m_transformationMatrix;
+        m_transformationMatrix = m_transformationMatrix * getRotationMatrix(_axis, _angle);
 	}
 
 	//! rotates the object in the object coordinate system
 	void rotateObject( const Vector3& _axis, float _angle )
 	{
-        m_transformationMatrix = m_transformationMatrix * getRotationMatrix(_axis, _angle);
+        m_transformationMatrix = getRotationMatrix(_axis, _angle) * m_transformationMatrix;
 	}
 
 
 	//! rotates the object around an arbitrary axis in world coordinate system
 	void rotateAroundAxisWorld( const Vector3 & _pt, const Vector3& _axis, float _angle )
 	{
-        m_transformationMatrix = (getTranslationMatrix(_pt) * getRotationMatrix(_axis, _angle) * getTranslationMatrix(-_pt)) * m_transformationMatrix;
+        m_transformationMatrix = m_transformationMatrix * (getTranslationMatrix(_pt) * getRotationMatrix(_axis, _angle) * getTranslationMatrix(-_pt));
 	}
 
 	//! rotates the object around an arbitrary axis in object coordinate system
 	void rotateAroundAxisObject( const Vector3 & _pt, const Vector3& _axis, float _angle )
 	{
-        m_transformationMatrix = m_transformationMatrix * (getTranslationMatrix(_pt) * getRotationMatrix(_axis, _angle) * getTranslationMatrix(-_pt));
+        m_transformationMatrix = (getTranslationMatrix(_pt) * getRotationMatrix(_axis, _angle) * getTranslationMatrix(-_pt)) * m_transformationMatrix;
 	}
 
 
@@ -139,8 +138,8 @@ public:
 	
 	//! calculate rotation matrix from rotation axis and angle in radian
 	static Matrix4 getRotationMatrix(const Vector3 & axis, double angle) {
-		/*Vector3 r = axis;
-    double phi1 = atan(r.x / r.z);
+		Vector3 r = axis;
+    double phi1 = atan2(r.x, r.z);
     
     double cosMinusPhi1 = cos(-phi1);
     double sinMinusPhi1 = sin(-phi1);
@@ -152,7 +151,7 @@ public:
     );
 
     Vector3 rPrim = RyMinus * r;
-    double phi2 = atan(rPrim.y / rPrim.x);
+    double phi2 = atan2(rPrim.y, rPrim.x);
 
     double cosPhi2 = cos(phi2);
     double sinPhi2 = sin(phi2);
@@ -192,9 +191,7 @@ public:
     );
 
 		Matrix4 rotationMatrix = Ry * RxMinus * Rz * Rx * RyMinus;
-    return rotationMatrix;*/
-	  Matrix4 rotationMatrix;
-	  rotationMatrix.loadIdentity();
+    return rotationMatrix;
         
 		return rotationMatrix;
 	
