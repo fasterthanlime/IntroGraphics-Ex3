@@ -119,6 +119,10 @@ public:
 
 	//! calculate translation matrix from vector
 	static Matrix4 getTranslationMatrix(const Vector3 & _trans) {
+    // DEBUG
+    // Matrix4 identity; identity.loadIdentity(); return identity;
+    // END DEBUG
+
 	  return Matrix4(
         1, 0, 0, _trans.x,
         0, 1, 0, _trans.y,
@@ -129,15 +133,24 @@ public:
 	
 	//! calculate scale matrix from vector
 	static Matrix4 getScaleMatrix(const Vector3 & _scale) {
-        return Matrix4(
+    // DEBUG
+    Matrix4 identity; identity.loadIdentity(); return identity;
+    // END DEBUG
+
+    return Matrix4(
         _scale.x, 0.0, 0.0, 0.0,
         0.0, _scale.y, 0.0, 0.0,
         0.0, 0.0, _scale.z, 0.0,
-        0.0, 0.0, 0.0, 1.0);
+        0.0, 0.0, 0.0, 1.0
+    );
 	}
 	
 	//! calculate rotation matrix from rotation axis and angle in radian
 	static Matrix4 getRotationMatrix(const Vector3 & axis, double angle) {
+    // DEBUG
+    Matrix4 identity; identity.loadIdentity(); return identity;
+    // END DEBUG
+
 		Vector3 r = axis;
     double phi1 = atan2(r.x, r.z);
     

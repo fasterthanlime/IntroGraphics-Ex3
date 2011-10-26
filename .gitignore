@@ -2,5 +2,6 @@
 *.suo
 *.ncb
 *.vcproj.*
+.*.swp
 *~
 visualstudio/01-CubeViewer/Debug

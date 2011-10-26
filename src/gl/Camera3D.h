@@ -131,27 +131,22 @@ public: //------------------------------------------------ public methods
 protected:
 //! calculate the perspective projection matrix
 void updateProjectionMatrix()
-    {
-// ((( Exercise 3.2.4 )))
-    
+{
+    // DEBUG
+    // m_perspectiveProjectionMatrix.loadIdentity(); return;
+    // END DEBUG
+
     double t, b, l, r, n, f;
     getScreenExtents(t, b, l, r);
     n = m_near;
     f = m_far;
       
-	m_perspectiveProjectionMatrix = Matrix4(
+	  m_perspectiveProjectionMatrix = Matrix4(
       n/r, 0 , 0 , 0,
       0 , n/t, 0 , 0,
       0 , 0 , - (f + n) / (f - n), -2*f*n / (f - n),
       0 , 0 , -1 , 0
 	  );
-	/*m_perspectiveProjectionMatrix = Matrix4(
-      2*n / (r - l), 0 , (r+l)/(r-l) , 0,
-      0 , 2*n / (t - b), (t+b)/(t-b) , 0,
-      0 , 0 , - (f + n) / (f - n), -2 * n * f / (f - n),
-      0 , 0 , -1 , 0
-    );*/
-	
 }
 	
 private: //------------------------------------------------------- private data
